@@ -10,37 +10,41 @@ import { useForm } from "react-hook-form";
 import { addDataApi } from "../../api/api";
 const Form = () => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [uploadedImages, setUploadedImages] = useState({
     main_image: "",
     first_floor_map_image: "",
-    second_floor_map_image: ""  ,
+    second_floor_map_image: "",
     sub_image_1: "",
     sub_image_2: "",
   });
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
 
   const onSubmit = async (data) => {
     console.log("formData", data);
-  
-    
+
     data.main_image = uploadedImages.main_image;
     data.first_floor_map_image = uploadedImages.first_floor_map_image;
     data.second_floor_map_image = uploadedImages.second_floor_map_image;
     data.sub_image_1 = uploadedImages.sub_image_1;
     data.sub_image_2 = uploadedImages.sub_image_2;
     data.second_floor_map_image = uploadedImages.second_floor_map_image;
-    const url = 'http://ec2-16-171-125-5.eu-north-1.compute.amazonaws.com:3000/api/write/Properties';
-  
+    const url = "http://16.170.205.35:3001/api/write/Properties";
+
     setLoading(true);
-  
+
     try {
       const response = await axios.post(url, data);
-  
-      console.log('Success:', response.data);
+
+      console.log("Success:", response.data);
       navigate("/properties");
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     } finally {
       setLoading(false);
     }
@@ -227,8 +231,7 @@ const Form = () => {
               register={register}
               fieldName={"is_ceiling"}
               required={true}
-              label = "Is ceiling"
-              
+              label="Is ceiling"
             />
             <InputDesign
               register={register}
@@ -286,67 +289,98 @@ const Form = () => {
               title="video Url"
               type="text"
             />
-        <div className="flex flex-col space-y-4">
-        <Upload
-  title="main image"
-  onFileUpload={(base64String) => handleFileUpload(base64String, 'main_image')}
-  register={register}
-  fieldName="main_image"
-/>
-{uploadedImages.main_image && (
-         <img src={`${uploadedImages.main_image}`} alt="uploadedImage" width={140} className='mb-6' />
-      )}
-        </div>
+            <div className="flex flex-col space-y-4">
+              <Upload
+                title="main image"
+                onFileUpload={(base64String) =>
+                  handleFileUpload(base64String, "main_image")
+                }
+                register={register}
+                fieldName="main_image"
+              />
+              {uploadedImages.main_image && (
+                <img
+                  src={`${uploadedImages.main_image}`}
+                  alt="uploadedImage"
+                  width={140}
+                  className="mb-6"
+                />
+              )}
+            </div>
 
-<div className="flex flex-col space-y-4">
-<Upload
-  title="first floor map image"
-  onFileUpload={(base64String) => handleFileUpload(base64String, 'first_floor_map_image')}
-  register={register}
-  fieldName="first_floor_map_image"
-/>
-{uploadedImages.first_floor_map_image && (
-         <img src={`${uploadedImages.first_floor_map_image}`} alt="uploadedImage" width={140} className='mb-6' />
-      )}
-</div>
-<div className="flex flex-col space-y-4">
-<Upload
-  title="second_floor_map_image"
-  onFileUpload={(base64String) => handleFileUpload(base64String, 'second_floor_map_image')}
-  register={register}
-  fieldName="second_floor_map_image"
-/>
-{uploadedImages.second_floor_map_image && (
-         <img src={`${uploadedImages.second_floor_map_image}`} alt="uploadedImage" width={140} className='mb-6' />
-      )}
-</div>
+            <div className="flex flex-col space-y-4">
+              <Upload
+                title="first floor map image"
+                onFileUpload={(base64String) =>
+                  handleFileUpload(base64String, "first_floor_map_image")
+                }
+                register={register}
+                fieldName="first_floor_map_image"
+              />
+              {uploadedImages.first_floor_map_image && (
+                <img
+                  src={`${uploadedImages.first_floor_map_image}`}
+                  alt="uploadedImage"
+                  width={140}
+                  className="mb-6"
+                />
+              )}
+            </div>
+            <div className="flex flex-col space-y-4">
+              <Upload
+                title="second_floor_map_image"
+                onFileUpload={(base64String) =>
+                  handleFileUpload(base64String, "second_floor_map_image")
+                }
+                register={register}
+                fieldName="second_floor_map_image"
+              />
+              {uploadedImages.second_floor_map_image && (
+                <img
+                  src={`${uploadedImages.second_floor_map_image}`}
+                  alt="uploadedImage"
+                  width={140}
+                  className="mb-6"
+                />
+              )}
+            </div>
 
-
-<div className="flex flex-col space-y-4">
-<Upload
-  title="sub image 1"
-  onFileUpload={(base64String) => handleFileUpload(base64String, 'sub_image_1')}
-  register={register}
-  fieldName="sub_image_1"
-/>
-{uploadedImages.sub_image_1 && (
-         <img src={`${uploadedImages.sub_image_1}`} alt="uploadedImage" width={140} className='mb-6' />
-      )}
-</div>
-<div className="flex flex-col space-y-4">
-<Upload
-  title="sub image 2"
-  onFileUpload={(base64String) => handleFileUpload(base64String, 'sub_image_2')}
-  register={register}
-  fieldName="sub_image_2"
-/>
-{uploadedImages.sub_image_2 && (
-         <img src={`${uploadedImages.sub_image_2}`} alt="uploadedImage" width={140} className='mb-6' />
-      )}
-</div>
-           
-          
-           
+            <div className="flex flex-col space-y-4">
+              <Upload
+                title="sub image 1"
+                onFileUpload={(base64String) =>
+                  handleFileUpload(base64String, "sub_image_1")
+                }
+                register={register}
+                fieldName="sub_image_1"
+              />
+              {uploadedImages.sub_image_1 && (
+                <img
+                  src={`${uploadedImages.sub_image_1}`}
+                  alt="uploadedImage"
+                  width={140}
+                  className="mb-6"
+                />
+              )}
+            </div>
+            <div className="flex flex-col space-y-4">
+              <Upload
+                title="sub image 2"
+                onFileUpload={(base64String) =>
+                  handleFileUpload(base64String, "sub_image_2")
+                }
+                register={register}
+                fieldName="sub_image_2"
+              />
+              {uploadedImages.sub_image_2 && (
+                <img
+                  src={`${uploadedImages.sub_image_2}`}
+                  alt="uploadedImage"
+                  width={140}
+                  className="mb-6"
+                />
+              )}
+            </div>
           </div>
           <h1>Property Good Details</h1>
           <div className="grid grid-cols-3 gap-4 p-10">
@@ -380,25 +414,25 @@ const Form = () => {
               register={register}
               fieldName={"has_window"}
               required={true}
-              label ="Has Window"
+              label="Has Window"
             />
             <Checkbox
               register={register}
               fieldName={"has_air_conditioners"}
               required={true}
-              label = "has Air Conditioners"
+              label="has Air Conditioners"
             />
             <Checkbox
               register={register}
               fieldName={"has_cable_tv"}
               required={true}
-              label = "Has Cable TV"
+              label="Has Cable TV"
             />
             <Checkbox
               register={register}
               fieldName={"has_fire_place"}
               required={true}
-              label= "Has fire place"
+              label="Has fire place"
             />
             <Checkbox
               register={register}
@@ -410,19 +444,19 @@ const Form = () => {
               register={register}
               fieldName={"has_wifi"}
               required={true}
-              label = " has wifi"
+              label=" has wifi"
             />
             <Checkbox
               register={register}
               fieldName={"has_ventillation"}
               required={true}
-              label = " has Ventillation"
+              label=" has Ventillation"
             />
             <Checkbox
               register={register}
               fieldName={"has_garage"}
               required={true}
-              label = " has Garage"
+              label=" has Garage"
             />
             <Checkbox
               register={register}
@@ -434,13 +468,13 @@ const Form = () => {
               register={register}
               fieldName={"has_parking"}
               required={true}
-              label = "Has Parking"
+              label="Has Parking"
             />
             <Checkbox
               register={register}
               fieldName={"has_garden"}
               required={true}
-              label = "Has Garden"
+              label="Has Garden"
             />
           </div>
           <h1>proeprty Nearby Details</h1>
@@ -464,7 +498,6 @@ const Form = () => {
               fieldName={"hospital_distance"}
               required={true}
               title="hospital Distance"
-              
               type="text"
             />
             <InputDesign
@@ -516,7 +549,7 @@ const Form = () => {
               // onClick={() => handleSubmit(handleFormSubmit)()}
               className="bg-[#1ebbd7] py-2 px-44 rounded-lg text-white"
             >
-           {loading? "SUbmitting..." :  " Submit"}
+              {loading ? "SUbmitting..." : " Submit"}
             </button>
           </div>
           {errors && Object.keys(errors).length > 0 && (
