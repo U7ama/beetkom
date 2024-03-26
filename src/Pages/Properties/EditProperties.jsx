@@ -68,7 +68,7 @@ const EditProperties = () => {
       data.sub_image_2 = uploadedImages.sub_image_2;
     }
 
-    const url = `http://16.170.205.35:3001/api/update/Properties/${id}`;
+    const url = `https://api.beetkom.org/api/update/Properties/${id}`;
 
     setLoading(true);
 
