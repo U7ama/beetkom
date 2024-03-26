@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Upload from "../Upload";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-
+import ArabicForm from "./ArabicForm";
 import { addDataApi } from "../../api/api";
 const Form = () => {
   const navigate = useNavigate();
@@ -549,16 +549,19 @@ const Form = () => {
               // onClick={() => handleSubmit(handleFormSubmit)()}
               className="bg-[#1ebbd7] py-2 px-44 rounded-lg text-white"
             >
-              {loading ? "SUbmitting..." : " Submit"}
+              {loading ? "Submitting..." : " Submit"}
             </button>
           </div>
+       
           {errors && Object.keys(errors).length > 0 && (
             <div className="text-red-500">
               <p>Fill Complete Form</p>
             </div>
           )}
         </form>
+       
       </div>
+      {/* <ArabicForm/> */}
     </>
   );
 };

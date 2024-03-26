@@ -7,6 +7,7 @@ const InputDesign = ({
   type,
   onChange,
   title,
+  lang
 }) => {
   // console.log("fieldName", fieldName, register);
   return (
@@ -14,6 +15,7 @@ const InputDesign = ({
       <div className="w-72">
         <div className="relative w-full min-w-[200px] h-10">
           <input
+           lang={lang}
             id={fieldName}
            
             {...register(fieldName, {
