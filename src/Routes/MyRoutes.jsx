@@ -8,6 +8,7 @@ import Login from "../container/Login/Login";
 import AddProperties from "../container/Add Properties/AddProperties";
 import EditProperties from "../Pages/Properties/EditProperties";
 import ArabicForm from "../components/Form/ArabicForm";
+import Form from "../components/Form/Form";
 export default function MyRoutes(){
     return(
         <Routes>
@@ -16,7 +17,8 @@ export default function MyRoutes(){
             <Route path="/reviews/:id" element={<Reviews/>}/>
             <Route path="/" element={<Login/>}/>
             <Route path="/add_properties" element={<AddProperties/>}/>
-            <Route path="/arabic" element={<ArabicForm/>}/>
+            <Route path="/add-property-ar" element={<ArabicForm/>}/>
+          
             <Route path="/edit_properties/:index/:id" element={<EditProperties/>}/>
         </Routes>
     )

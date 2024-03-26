@@ -34,7 +34,7 @@ const Form = () => {
     data.sub_image_1 = uploadedImages.sub_image_1;
     data.sub_image_2 = uploadedImages.sub_image_2;
     data.second_floor_map_image = uploadedImages.second_floor_map_image;
-    const url = "http://16.170.205.35:3001/api/write/Properties";
+    const url = "https://api.beetkom.org/api/write/Properties";
 
     setLoading(true);
 

@@ -115,7 +115,9 @@ const displayIndex = index + 1
       <button onClick={handleRefresh}>
         <img src={refreshBtn} alt="refresh" />
       </button>
-      <Link to="/add_properties">Add New Property</Link>
+      <Link 
+      className="bg-[#1ebbd7] py-2 px-4 rounded-lg text-white"
+      to="/add_properties">Add New Property</Link>
     </div>
   );
   return (

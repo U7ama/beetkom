@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { arLabels } from './arLabels'
 import { useForm } from "react-hook-form";
 import axios from "axios"
+import Header from "../../components/Header"
 const ArabicForm = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -34,7 +35,7 @@ const ArabicForm = () => {
       data.sub_image_1 = uploadedImages.sub_image_1;
       data.sub_image_2 = uploadedImages.sub_image_2;
       data.second_floor_map_image = uploadedImages.second_floor_map_image;
-      const url = "http://16.170.205.35:3001/api/write/Properties";
+      const url = "https://api.beetkom.org/api/write/Properties";
   
       setLoading(true);
   
@@ -78,13 +79,15 @@ const ArabicForm = () => {
       }));
     };
         return (
+          <>
+        
             <div className='p-20'>
              <form
           onSubmit={handleSubmit(onSubmit)}
           className="p-4 flex flex-col w-full"
         >
           <h1>Add New Property</h1>
-          <div className="grid grid-cols-3 gap-4 p-10">
+          <div className="grid grid-cols-3 gap-4 p-10 text-xl">
             <InputDesign
               register={register}
               fieldName={"title"}
@@ -560,6 +563,7 @@ const ArabicForm = () => {
         </form>
          
             </div>
+            </>
         )
 }
 
