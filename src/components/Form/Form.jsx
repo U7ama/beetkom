@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Upload from "../Upload";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import ArabicForm from "./ArabicForm";
+
 import { addDataApi } from "../../api/api";
 const Form = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const Form = () => {
     data.sub_image_1 = uploadedImages.sub_image_1;
     data.sub_image_2 = uploadedImages.sub_image_2;
     data.second_floor_map_image = uploadedImages.second_floor_map_image;
-    const url = "https://api.beetkom.org/api/write/Properties";
+    const url = "http://16.170.205.35:3001/api/write/Properties";
 
     setLoading(true);
 
@@ -552,7 +552,6 @@ const Form = () => {
               {loading ? "Submitting..." : " Submit"}
             </button>
           </div>
-       
           {errors && Object.keys(errors).length > 0 && (
             <div className="text-red-500">
               <p>Fill Complete Form</p>

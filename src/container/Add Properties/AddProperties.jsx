@@ -17,12 +17,8 @@ const AddProperties = () => {
 
   return (
     <div>
-      <Header />
-      <div className='px-10 flex justify-between w-full items-center'>
-        <Link onClick={() => setLanguage('english')}>English</Link>
-        <Link onClick={() => setLanguage('arabic')}>Arabic</Link>
-      </div>
-      {renderForm()}
+      <Header/>
+<Form btnText = "Send"/>
     </div>
   );
 };
