@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 import Upload from "../Upload";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-
+import Header from "../Header"
 import { addDataApi } from "../../api/api";
+import {Link} from "react-router-dom"
 const Form = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -39,10 +40,11 @@ const Form = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(url, data);
+     
+      localStorage.setItem("engData", JSON.stringify(data));
 
-      console.log("Success:", response.data);
-      navigate("/properties");
+      console.log("Success:", data);
+    navigate("/add-property-ar")
     } catch (error) {
       console.error("Error:", error);
     } finally {
@@ -79,14 +81,23 @@ const Form = () => {
   };
   return (
     <>
-      <div className="p-20">
+    <Header/>
+    {/* <div className='px-10 flex justify-between w-full items-center'>
+        <Link
+        to={`/add_properties`} 
+         >English</Link>
+        <Link to={`/add-property-ar`}>Arabic</Link>
+      </div> */}
+      <div className="px-20 py-10">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="p-4 flex flex-col w-full"
         >
-          <h1>Add New Property</h1>
-          <div className="grid grid-cols-3 gap-4 p-10">
-            <InputDesign
+          <h1 className="text-2xl flex w-full items-center justify-center uppercase text-[#6b748c]">Add New    
+           <span className="text-[#70bcd7] font-semibold ml-2">   Property</span></h1>
+          <div className=" p-10">
+           <div className="grid grid-cols-3 gap-4">
+           <InputDesign
               register={register}
               fieldName={"title"}
               required={true}
@@ -181,39 +192,21 @@ const Form = () => {
               title="floor Type"
               type="text"
             />
-            <Checkbox
-              register={register}
-              fieldName={"is_floor_available"}
-              required={true}
-              label="is FLoor Availible"
-            />
-            <InputDesign
+             <InputDesign
               register={register}
               fieldName={"additional_space_type"}
               required={true}
               title="additional Space Type"
               type="text"
             />
-            <Checkbox
-              register={register}
-              fieldName={"is_additional_space"}
-              required={true}
-              label="Is aditional Space"
-            />
-            <InputDesign
+             <InputDesign
               register={register}
               fieldName={"furnished_type"}
               required={true}
               title="furnished Type"
               type="text"
             />
-            <Checkbox
-              register={register}
-              fieldName={"is_furnished"}
-              required={true}
-              label="Is furnished"
-            />
-            <InputDesign
+               <InputDesign
               register={register}
               fieldName={"revolution_date"}
               required={true}
@@ -227,13 +220,7 @@ const Form = () => {
               title="ceiling Height"
               type="text"
             />
-            <Checkbox
-              register={register}
-              fieldName={"is_ceiling"}
-              required={true}
-              label="Is ceiling"
-            />
-            <InputDesign
+             <InputDesign
               register={register}
               fieldName={"construction_year"}
               required={true}
@@ -289,6 +276,38 @@ const Form = () => {
               title="video Url"
               type="text"
             />
+           </div>
+          <div className="grid grid-cols-4 py-10">
+          <Checkbox
+              register={register}
+              fieldName={"is_floor_available"}
+              required={true}
+              label="is FLoor Availible"
+            />
+           
+            <Checkbox
+              register={register}
+              fieldName={"is_additional_space"}
+              required={true}
+              label="Is aditional Space"
+            />
+           
+            <Checkbox
+              register={register}
+              fieldName={"is_furnished"}
+              required={true}
+              label="Is furnished"
+            />
+         
+            <Checkbox
+              register={register}
+              fieldName={"is_ceiling"}
+              required={true}
+              label="Is ceiling"
+            />
+           
+          </div>
+            <div className="grid grid-cols-3 gap-7">
             <div className="flex flex-col space-y-4">
               <Upload
                 title="main image"
@@ -382,7 +401,8 @@ const Form = () => {
               )}
             </div>
           </div>
-          <h1>Property Good Details</h1>
+            </div>
+          <h1 className="text-2xl px-8">Property <span className="text-[#70bcd7] font-semibold">Good Details</span></h1>
           <div className="grid grid-cols-3 gap-4 p-10">
             <InputDesign
               register={register}
@@ -477,7 +497,8 @@ const Form = () => {
               label="Has Garden"
             />
           </div>
-          <h1>proeprty Nearby Details</h1>
+          <h1 className="text-2xl px-8">Property <span className="text-[#70bcd7] font-semibold">Nearby Details</span></h1>
+         
           <div className="grid grid-cols-3 gap-4 p-10">
             <InputDesign
               register={register}
@@ -549,7 +570,7 @@ const Form = () => {
               // onClick={() => handleSubmit(handleFormSubmit)()}
               className="bg-[#1ebbd7] py-2 px-44 rounded-lg text-white"
             >
-              {loading ? "Submitting..." : " Submit"}
+              {loading ? "loading..." : " Next"}
             </button>
           </div>
           {errors && Object.keys(errors).length > 0 && (

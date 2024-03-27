@@ -10,9 +10,9 @@ const Users = () => {
   };
   return (
     <div className="w-full flex flex-col">
-      <div className="flex items-center justify-center w-full py-4 text-white bg-gray-700">
+      {/* <div className="flex items-center justify-center w-full py-4 text-white bg-gray-700">
         <p>Can't get your store to work? Call 0300-xxxxxxx</p>
-      </div>
+      </div> */}
       {/* ced9da */}
       <div className="flex ">
         <div className="flex w-1/2 justify-start p-8 bg-[#f1fffe] m-4 rounded-lg">
