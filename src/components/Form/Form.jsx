@@ -130,13 +130,9 @@ const Form = () => {
               required={true}
               options={catogery}
             />
-            <InputDesign
-              register={register}
-              fieldName={"description"}
-              required={true}
-              title="description"
-              type="text"
-            />
+            
+            
+           
             <InputDesign
               register={register}
               fieldName={"contact_no"}
@@ -144,6 +140,12 @@ const Form = () => {
               title="contact No"
               type="text"
             />
+             <textarea
+            placeholder="Description"
+            className="border outline-0 p-2"
+             name="description" id="description" cols="30" rows="5" 
+             {...register("description", { required: true })}
+             />
             <InputDesign
               register={register}
               fieldName={"size"}

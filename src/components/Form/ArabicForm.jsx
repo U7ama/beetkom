@@ -114,13 +114,7 @@ const ArabicForm = () => {
               required={true}
               options={catogery}
             />
-            <InputDesign
-              register={register}
-              fieldName={"description"}
-              required={true}
-              title={arLabels.description}
-              type="text"
-            />
+           
             <InputDesign
               register={register}
               fieldName={"contact_no"}
@@ -128,6 +122,12 @@ const ArabicForm = () => {
               title={arLabels.contact_no}
               type="text"
             />
+             <textarea
+            placeholder={arLabels.description}
+            className="border outline-0 p-2"
+             name="description" id="description" cols="30" rows="5" 
+             {...register("description", { required: true })}
+             />
             <InputDesign
               register={register}
               fieldName={"size"}
