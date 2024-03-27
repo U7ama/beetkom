@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { getProperties } from "../../api/api";
 import Header from "../../components/Header";
 import { useParams } from "react-router-dom";
+import {arLabels} from "../../components/Form/arLabels"
 const EditProperties = () => {
   const { id, index } = useParams();
   const [loading, setLoading] = useState();
@@ -68,15 +69,15 @@ const EditProperties = () => {
       data.sub_image_2 = uploadedImages.sub_image_2;
     }
 
-    const url = `https://api.beetkom.org/api/update/Properties/${id}`;
+    // const url = `https://api.beetkom.org/api/update/Properties/${id}`;
 
     setLoading(true);
 
     try {
-      const response = await axios.put(url, data);
+      localStorage.setItem("engDataEdit", JSON.stringify(data));
 
-      console.log("Success:", response.data);
-      navigate("/properties");
+      console.log("Success:", data);
+      navigate(`/edit_properties_ar/${index}/${id}`);
     } catch (error) {
       console.error("Error:", error);
     } finally {
@@ -640,13 +641,14 @@ const EditProperties = () => {
               type="text"
             />
           </div>
+          
           <div className="flex items-center w-full justify-center">
             <button
               type="submit"
               // onClick={() => handleSubmit(handleFormSubmit)()}
               className="bg-[#1ebbd7] py-2 px-44 rounded-lg text-white"
             >
-              {loading ? "SUbmitting..." : " Submit"}
+              {loading ? "loading..." : " Next"}
             </button>
           </div>
           {errors && Object.keys(errors).length > 0 && (

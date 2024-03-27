@@ -1,8 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import InputDesign from '../InputDesign'
 import SelectInputDesign from '../MultiInputSelect'
-import Checkbox from '../Checkbox'
-import Upload from '../Upload'
+
 import Header from "../../components/Header"
 import { useNavigate } from "react-router-dom";
 import { arLabels } from './arLabels'

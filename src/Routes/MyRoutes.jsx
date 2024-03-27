@@ -7,6 +7,7 @@ import Reviews from "../Pages/Reviews/Reviews"
 import Login from "../container/Login/Login";
 import AddProperties from "../container/Add Properties/AddProperties";
 import EditProperties from "../Pages/Properties/EditProperties";
+import EditArabic from "../Pages/Properties/EditArabic";
 import ArabicForm from "../components/Form/ArabicForm";
 import Form from "../components/Form/Form";
 export default function MyRoutes(){
@@ -20,6 +21,7 @@ export default function MyRoutes(){
             <Route path="/add-property-ar" element={<ArabicForm/>}/>
           
             <Route path="/edit_properties/:index/:id" element={<EditProperties/>}/>
+            <Route path="/edit_properties_ar/:index/:id" element={<EditArabic/>}/>
         </Routes>
     )
 }
