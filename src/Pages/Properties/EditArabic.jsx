@@ -39,7 +39,7 @@ const EditArabic = () => {
   const onSubmit = async (data) =>{
     console.log(data)
     setLoading(true);
-      const url = `https://api.beetkom.org/api/update/Properties/${id}`;
+      const url = `https://gapi.beetkom.org/api/update/Properties/${id}`;
 
     const EnglishData = allData
     const newData = data
